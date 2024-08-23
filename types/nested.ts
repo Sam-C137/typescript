@@ -1,0 +1,1 @@
+type NestedNumbers = number | NestedNumbers[];

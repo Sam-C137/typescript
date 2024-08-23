@@ -11,7 +11,7 @@ type FakeReturnType<T> = T extends (...args: unknown[]) => infer R ? R : never;
 type FunkyType = FakeReturnType<typeof funky>;
 
 /**
- * geting the types from a deeply nested object
+ * getting the types from a deeply nested object
  */
 
 const obj = {

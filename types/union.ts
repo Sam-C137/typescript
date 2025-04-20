@@ -12,6 +12,8 @@ type OnlyFirst<F, S> = F & {
     [K in keyof Omit<S, keyof F>]?: never
 }
 
+
+
 /**
  * Merges all types from a tuple into one type
  */

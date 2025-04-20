@@ -54,3 +54,30 @@ function main() {
 }
 
 main();
+
+class AsyncCtor {
+    private foo: string;
+
+    // valid js btw
+    constructor(value: string) {
+        //@ts-expect-error
+        return new Promise<AsyncCtor>((resolve, reject) => {
+            this.foo = value;
+            resolve(this);
+        })
+    }
+}
+
+class BetterAsyncCtor {
+    private foo: string;
+
+    private constructor(value: string) {
+        this.foo = value
+    }
+
+    static async create(value: string): Promise<BetterAsyncCtor> {
+        return new Promise<BetterAsyncCtor>((resolve, reject) => {
+            resolve(new BetterAsyncCtor(value));
+        })
+    }
+}
